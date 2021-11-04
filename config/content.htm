@@ -8,7 +8,12 @@
 <p><a href="https://40823148.github.io/cad2021_hw/">網站連結</a></p>
 <p></p>
 <h1>TASK</h1>
-<h2>HWPages</h2>
+<p>學員list</p>
+<p><a href="https://gist.githubusercontent.com/40823148/292f9cb269defe6a29bbbe67eb2a3069/raw/5f15d62ea98b22de40e3a277a3b7468b289729c6/cad2021_2b_stud_list">2b-list</a></p>
+<p><a href="/get_page/TASK/2b_list"></a></p>
+<div id="gtx-trans" style="position: absolute; left: -22px; top: 55.675px;">
+<div class="gtx-trans-icon"></div>
+</div><h2>HWPages</h2>
 <p><strong>程式 來源參考:mde.tw</strong></p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 將資料存入 gist, 取其 url
 url = "https://gist.githubusercontent.com/40823148/292f9cb269defe6a29bbbe67eb2a3069/raw/5f15d62ea98b22de40e3a277a3b7468b289729c6/cad2021_2b_stud_list"
@@ -93,7 +98,8 @@ for i in range(len(data)):
 <p><a href="https://40923253.github.io/cad2021_hw">40923253</a></p>
 <p><a href="https://40971220.github.io/cad2021_hw">40971220</a></p>
 <p><a href="https://40971227.github.io/cad2021_hw">40971227</a></p>
-<p></p><h2>repo+pages</h2>
+<p></p>
+<h2>repo+pages</h2>
 <p><strong>程式 來源參考:mde.tw</strong></p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 將資料存入 gist, 取其 url
 url = "https://gist.githubusercontent.com/40823148/292f9cb269defe6a29bbbe67eb2a3069/raw/5f15d62ea98b22de40e3a277a3b7468b289729c6/cad2021_2b_stud_list"
@@ -176,7 +182,45 @@ for i in range(len(data)):
 <p>倉儲:<a href="https://github.com/40923252/cad2021_hw">40923252</a> 網頁:<a href="https://40923252.github.io/cad2021_hw">40923252</a></p>
 <p>倉儲:<a href="https://github.com/40923253/cad2021_hw">40923253</a> 網頁:<a href="https://40923253.github.io/cad2021_hw">40923253</a></p>
 <p>倉儲:<a href="https://github.com/40971220/cad2021_hw">40971220</a> 網頁:<a href="https://40971220.github.io/cad2021_hw">40971220</a></p>
-<p>倉儲:<a href="https://github.com/40971227/cad2021_hw">40971227</a> 網頁:<a href="https://40971227.github.io/cad2021_hw">40971227</a></p><h1>HW1</h1>
+<p>倉儲:<a href="https://github.com/40971227/cad2021_hw">40971227</a> 網頁:<a href="https://40971227.github.io/cad2021_hw">40971227</a></p>
+<h2>隨機抽10位學員</h2>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html
+from browser import document
+import random
+
+brython_div = document["brython_div"]
+
+# 將資料存入 gist, 取其 url
+url = "https://gist.githubusercontent.com/40823148/292f9cb269defe6a29bbbe67eb2a3069/raw/5f15d62ea98b22de40e3a277a3b7468b289729c6/cad2021_2b_stud_list"
+# 利用 open() 開啟 url 後, 以 readlines() 讀取後可納入數列
+data = open(url).readlines()
+# 檢查資料筆數, 第一筆為 title
+#print(data)
+#print(len(data))
+data = data[1:]
+#print(data)
+
+# 根據 href 與 content 將 html 元件中的 anchor 插入頁面
+def makeLink(href, content):
+    brython_div &lt;= html.A(content, href=href)
+    brython_div &lt;= html.BR()
+
+
+# 從學員資料中隨機取出 10 位學員的網頁進行查核
+select = 10
+random.shuffle(data)
+data = data[:10]
+
+for i in range(len(data)):
+    num_github = data[i] 
+    num = num_github.split("\t")[0]
+    account = num_github.split("\t")[1]
+    if account == "":
+        account = num
+    content = str(num)
+    href = "https://"+ str(account) + ".github.io/cad2021_hw"
+    makeLink(href, content)</pre>
+<p><br/><br/></p><h1>HW1</h1>
 <p></p>
 <p></p>
 <h2>CAD1 繪圖</h2>
